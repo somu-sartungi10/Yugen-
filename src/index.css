@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-color: #04101a;
+}
+
+.navbar{
+    border-bottom: 1px solid #82bceb ;
+}
+
+.card{
+    width: 280px; /* same as Tailwind w-52 */
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px ;
+    height: 300px;
+}
+
+
+.card-wrapper{
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+}
+.card-container{
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: fit-content;
+    gap: 28px;
+
+}
+
+.centered-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+  text-align: center;
+}
+
+
