@@ -10,15 +10,6 @@ body{
     border-bottom: 1px solid #82bceb ;
 }
 
-.card{
-    width: 280px; /* same as Tailwind w-52 */
-    align-items: center;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 2px ;
-    height: 300px;
-}
-
 
 .card-wrapper{
     padding: 24px;
@@ -26,13 +17,12 @@ body{
     justify-content: center;
 }
 .card-container{
-    justify-content: center;
+    background-color: red;
     align-items: center;
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    width: fit-content;
-    gap: 28px;
-
+    grid-template-columns: repeat(5,1fr);
+    width: 100%;
+    gap: 24px;
 }
 
 .centered-message {
@@ -43,5 +33,14 @@ body{
   z-index: 50;
   text-align: center;
 }
+
+/* Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(130, 188, 235,0.5) transparent;
+}
+
+/* Chrome, Edge, Brave */
+
 
 

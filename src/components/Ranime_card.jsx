@@ -1,6 +1,11 @@
+import { NavLink } from "react-router-dom"
 
 export const Ranime_card = ({R_Anime}) => {
+  if (!R_Anime) return null
   return (
+    <NavLink
+    to={`/anime/${R_Anime.mal_id}`}
+    >
     <div className="r-card flex h-fit bg-card-bg  rounded-lg">
             <div className="relative">
             {R_Anime?.images?.jpg?.image_url && (
@@ -40,6 +45,7 @@ export const Ranime_card = ({R_Anime}) => {
               </p>
 
             </div>
-          </div>
+    </div>
+    </NavLink>
   )
 }

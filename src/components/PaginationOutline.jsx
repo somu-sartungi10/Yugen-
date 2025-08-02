@@ -31,13 +31,13 @@ export const PaginationOutline = ({count,current_page,onPageChange,isLoading,ani
             color : '#e5f3fb',
           },
           '& .MuiPaginationItem-root.Mui-selected':{
-             backgroundColor: '#8b1716',
-            color: '#e5f3fb',
+             backgroundColor: '#82bceb',
+            color: '#04101a',
             borderColor: '#82bceb',
           },
           '& .MuiPaginationItem-root:hover':{
-            backgroundColor : '#8b1716',
-            color : '#e7f1f1',
+            backgroundColor : '#82bceb',
+            color : '#04101a',
           }
         }}
         />
