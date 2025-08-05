@@ -4,27 +4,26 @@ import AnimeCard from "../components/AnimeCard";
 import Loader from "../components/Loader";
 import { useAllAnime, useGetGenres } from "../hooks/useAnime";
 import { useEffect, useState } from "react";
-import { PaginationOutline } from "../components/PaginationOutline";
 import Dropdown from "../components/Dropdown";
 import Tags from "../components/tags";
 import MultiSelDD from "../components/MultiSelDD";
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 const SearchAnime = () => {
   const { data: genData } = useGetGenres();
-  const [selectedGenres,setSelectedGenres] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState([]);
 
-  const genreOptions = genData?.data?.map((genre)=>({
-    label:genre.name,
-    value:genre.mal_id.toString(),
-  }))
-  console.log(genreOptions)
+  const genreOptions = genData?.data?.map((genre) => ({
+    label: genre.name,
+    value: genre.mal_id.toString(),
+  }));
 
-  useEffect(()=>{
-    setFilter((prev)=>({
+  useEffect(() => {
+    setFilter((prev) => ({
       ...prev,
-      genre:selectedGenres.join(","),
+      genre: selectedGenres.join(","),
     }));
-  },[selectedGenres]);
+  }, [selectedGenres]);
 
   const animeFilters = {
     type: [
@@ -54,7 +53,7 @@ const SearchAnime = () => {
       "favorites",
     ],
     sort: ["desc", "asc"],
-    genre:selectedGenres
+    genre: selectedGenres,
   };
 
   const [filter, setFilter] = useState({
@@ -64,9 +63,8 @@ const SearchAnime = () => {
     rating: "",
     order_by: "",
     sort: "",
-    genre:"",
+    genre: "",
   });
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -81,10 +79,10 @@ const SearchAnime = () => {
       ...prev,
       [key]: "",
     }));
+  };
 
-    if (key === "genre"){
-      setSelectedGenres([])
-    }
+  const handleGenreDelete = (valueToRemove) => {
+    setSelectedGenres((prev) => prev.filter((val) => val !== valueToRemove));
   };
 
   const {
@@ -99,7 +97,7 @@ const SearchAnime = () => {
     rating: filter.rating,
     order_by: filter.order_by,
     sort: filter.sort,
-    genres:filter.genre,
+    genres: filter.genre,
   });
 
   const animeList = Array.isArray(animeData) ? animeData : [];
@@ -108,102 +106,122 @@ const SearchAnime = () => {
   return (
     <>
       <Navbar />
-
-      <div className="px-6 flex flex-col gap-10 justify-center py-4">
-        <div className="text-2xl text-text font-bold text-center">
-          Search your favourite anime...
-        </div>
-        <div>
-          <div className="flex items-center justify-center gap-4">
-            <div className="flex flex-col gap-2">
-              <span className="text-text font-bold">Search</span>
-              <input
-                type="text"
-                placeholder="Search what you're looking for"
-                className="outline-none p-2 px-4 bg-text border rounded-md text-sm w-[300px]"
-                name="q"
-                value={filter.q}
-                onChange={handleChange}
+      <div className=" flex flex-col gap-10 justify-center py-4">
+        <div className="flex ">
+          <div className="px-6">
+            <div className="grid rounded-lg grid-cols-2 gap-4 w-[300px] items-center bg-card-bg p-4">
+              <div className="flex flex-col gap-2  col-span-2">
+                <span className="text-text font-bold">Search</span>
+                <div className="flex gap-2 items-center rounded-md py-2 px-2 bg-text text-primary ring-primary ring-2">
+                  <SearchOutlinedIcon
+                  fontSize="small"
+                  />
+                <input
+                  type="text"
+                  placeholder="Search what you're looking for"
+                  className="outline-none text-background/70  bg-text rounded-md text-sm
+                   w-full"
+                  name="q"
+                  value={filter.q}
+                  onChange={handleChange}
+                />
+                </div>
+              </div>
+              <MultiSelDD
+                options={genreOptions}
+                selected={selectedGenres}
+                onChange={setSelectedGenres}
+                label="Genres"
+              />
+              <Dropdown
+                handleChange={handleChange}
+                options={animeFilters.type}
+                value={filter.type}
+                label={`Type`}
+                name={"type"}
+              />
+              <Dropdown
+                handleChange={handleChange}
+                options={animeFilters.status}
+                value={filter.status}
+                label={"Status"}
+                name={"status"}
+              />
+              <Dropdown
+                handleChange={handleChange}
+                options={animeFilters.rating}
+                value={filter.rating}
+                label={"Rating"}
+                name={"rating"}
+              />
+              <Dropdown
+                handleChange={handleChange}
+                options={animeFilters.order_by}
+                value={filter.order_by}
+                label={"Order"}
+                name={"order_by"}
+              />
+              <Dropdown
+                handleChange={handleChange}
+                options={animeFilters.sort}
+                value={filter.sort}
+                label={"Sort By"}
+                name={"sort"}
               />
             </div>
-            <Dropdown
-              handleChange={handleChange}
-              options={animeFilters.type}
-              value={filter.type}
-              label={`Type`}
-              name={"type"}
-            />
-            <Dropdown
-              handleChange={handleChange}
-              options={animeFilters.status}
-              value={filter.status}
-              label={"Status"}
-              name={"status"}
-            />
-            <Dropdown
-              handleChange={handleChange}
-              options={animeFilters.rating}
-              value={filter.rating}
-              label={"Rating"}
-              name={"rating"}
-            />
-            <Dropdown
-              handleChange={handleChange}
-              options={animeFilters.order_by}
-              value={filter.order_by}
-              label={"Order"}
-              name={"order_by"}
-            />
-            <Dropdown
-              handleChange={handleChange}
-              options={animeFilters.sort}
-              value={filter.sort}
-              label={"Sort By"}
-              name={"sort"}
-            />
-            <MultiSelDD
-            options={genreOptions}
-            selected={selectedGenres}
-            onChange={setSelectedGenres}
-            label="Genres"
-            />
+            <div className="flex mt-4 items-center gap-4 w-[300px]">
+              <div className="text-text font-bold">Tags:</div>
+              <div className="my-2 flex gap-2 flex-wrap">
+                {selectedGenres.length > 0 &&
+                  selectedGenres.map((genreValue) => {
+                    const genreLabel = genreOptions?.find(
+                      (g) => g.value === genreValue
+                    )?.label;
+                    return (
+                      <Tags
+                        key={genreValue}
+                        label="genre"
+                        value={genreLabel}
+                        handleDelete={() => handleGenreDelete(genreValue)}
+                      />
+                    );
+                  })}
+                {Object.entries(filter).map(([key, value]) =>
+                  value && key !== "genre" ? (
+                    <Tags
+                      key={key}
+                      label={key}
+                      value={value}
+                      handleDelete={handleDelete}
+                    />
+                  ) : null
+                )}
+              </div>
+            </div>
           </div>
 
-          <div className="flex mt-4 items-center gap-4">
-            <div className="text-text font-bold">Tags :</div>
-            <div className="my-2 flex gap-2 flex-wrap">
-              {Object.entries(filter).map(([key, value]) =>
-                value ? (
-                  <Tags
-                    key={key}
-                    label={key}
-                    value={value}
-                    handleDelete={handleDelete}
-                  />
-                ) : null
-              )}
-            </div>
+          <div className="w-full  flex justify-center items-center">
+            {!animeList ||
+              (animeList.length === 0 && !isLoading && (
+                <div className="text-secondary centered-message">
+                  Sorry No result found
+                </div>
+              ))}
+            {isLoading ? (
+              <Loader />
+            ) : isError ? (
+              <div className="text-red text-base">{error.message}</div>
+            ) : (
+              <GridLayout
+                children={animeList.map((anime) => (
+                  <AnimeCard key={anime.mal_id} anime={anime} />
+                ))}
+                className=""
+              />
+            )}
           </div>
         </div>
       </div>
-
-      {!isLoading && filter.q ? (
-        <div className="px-6 text-text text-base">
-          <span className="text-accent">{animeList.length}</span> Results found
-          on "{filter.q}"
-        </div>
-      ) : null}
-      {isLoading ? (
-        <Loader />
-      ) : isError ? (
-        <div className="text-red text-base">{error.message}</div>
-      ) : (
-        <GridLayout
-          children={animeList.map((anime) => (
-            <AnimeCard key={anime.mal_id} anime={anime} />
-          ))}
-        />
-      )}
     </>
   );
 };

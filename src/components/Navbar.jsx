@@ -1,22 +1,25 @@
 import { NavLink } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "./button";
+import { HomeOutlined } from "@mui/icons-material";
+import Logo from '../assets/logo5.png'
+import ArrowUpwardOutlinedIcon from '@mui/icons-material/ArrowUpwardOutlined';
 
 export const Navbar = ({ refresh }) => {
   return (
-    <nav className="navbar flex items-center justify-between px-8 h-20">
-      <div className="flex gap-20">
-        <NavLink to={`/`}>
-          <button
+    <nav className="navbar flex items-center justify-between bg-primary/10 px-8 h-[100px]">
+      <div className="flex  gap-10">
+        <NavLink className='flex  items-center' to={`/`}>
+          <div
             onClick={() => refresh()}
-            className="text-2xl text-text font-extrabold"
+            className="text-3xl text-text  font-extrabold"
           >
-            Yugen
-          </button>
+            <img src={Logo} className="h-[50px]" />
+          </div>
         </NavLink>
-        <div className="nav-item text-text font-body text-base items-center flex gap-4">
-          <Button to={`/`} label={`Home`} />
-          <Button to={`/top/anime`} label={`Top`} />
+        <div className=" text-text flex font-body text-base gap-5">
+          <Button to={`/`} label={`Home`} icon={<HomeOutlined fontSize="small"/>} />
+          <Button to={`/top/anime`} label={`Top`} icon={<ArrowUpwardOutlinedIcon fontSize="small"/>}/>
           <Button to={`/random`} label={`Surprise Me!`} />
         </div>
       </div>
@@ -25,7 +28,7 @@ export const Navbar = ({ refresh }) => {
         to="/search"
         className={({ isActive }) =>
           `bg-text flex justify-center items-center rounded-md transition p-1 px-3 ${
-            isActive ? "border-2 border-accent " : ""
+            isActive ? "border-3 border-primary " : ""
           }`
         }
       >

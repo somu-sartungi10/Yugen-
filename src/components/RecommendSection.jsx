@@ -21,7 +21,7 @@ const RecommendSection = ({ id, isLoading }) => {
   }
 
   return (
-    <div>
+    <div className="py-8">
       <div className="text-text text-2xl px-4 py-2 font-bold">
         <div>You may also like</div>
       </div>

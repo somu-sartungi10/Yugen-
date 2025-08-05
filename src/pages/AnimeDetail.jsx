@@ -42,7 +42,7 @@ export const AnimeDetail = () => {
   }, [isLoading]);
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col">
       <Navbar />
       <div className="py-4 px-8">
         {isLoading || !showContent ? (
@@ -133,7 +133,7 @@ export const AnimeDetail = () => {
                         AnimeData.genres.map((genres) => (
                           <div
                             key={genres.mal_id}
-                            className="px-2 flex items-center gap-1 bg-primary/10 backdrop-blur-md border border-primary py-0.5  text-text rounded-md text-sm transition-all duration-200 hover:bg-primary/50"
+                            className="px-2 flex items-center gap-1 bg-primary/20 backdrop-blur-md border border-primary py-0.5  text-text rounded-md text-sm transition-all duration-200 hover:bg-primary/50"
                           >
                             <SellOutlinedIcon
                             style={{fontSize:'14px'}}
@@ -188,9 +188,9 @@ export const AnimeDetail = () => {
                     </div>
 
                     {AnimeData?.trailer?.embed_url ? (
-                      <div>
+                      <div className="w-full aspect-[16/9]">
                         <iframe
-                          className="w-full h-[300px] md:h-[400px] lg:h-[500px]"
+                          className="w-full h-full "
                           src={AnimeData.trailer.embed_url}
                           allowFullScreen
                         />

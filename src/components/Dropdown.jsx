@@ -8,7 +8,7 @@ const Dropdown = ({ handleChange, value, options, label, name }) => {
           value={value}
           onChange={handleChange}
           className={
-            `appearance-none w-full px-4 pr-10 py-2 bg-card-bg text-text text-sm rounded-lg focus:outline-none border-primary border focus:ring-2 focus:ring-accent ${
+            `appearance-none w-full px-4 pr-10 py-2 bg-background text-text text-sm rounded-lg focus:outline-none border-primary border focus:ring-2 focus:ring-accent ${
                 value && `border border-accent`
             }`
           }

@@ -6,7 +6,7 @@ const Home = () => {
     <div>
       <Navbar/>
       <span className="flex text-3xl font-bold animate-pulse text-text justify-center items-center h-svh">
-        Under construction.🛠️
+        Under construction by somu.🛠️
       </span>
     </div>
   );

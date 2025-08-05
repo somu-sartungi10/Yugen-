@@ -43,11 +43,13 @@ export const TopAnime = () => {
   console.log(TopAnimeData);
 
   return (
-    <div className="pb-8">
+    <div className="pb-8 h-full ">
       <Navbar />
       <div className="text-text font-bold  px-6 text-2xl mt-4">
         Top Anime
       </div>
+
+      <div className="flex justify-center items-center min-h-svh">
       {isLoading ? (
         <Loader/>
       ) : isError ? (
@@ -62,6 +64,7 @@ export const TopAnime = () => {
         ))}
         />
       )}
+      </div>
       <PaginationOutline
       count={PaginationData?.last_visible_page}
       current_page={PaginationData?.current_page}
