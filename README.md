@@ -1,12 +1,47 @@
-# React + Vite
+# 🌌 Yugen — Discover & Explore Your Favorite Anime
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Yugen Banner](https://your-image-link.com/banner.png) <!-- Optional banner -->
 
-Currently, two official plugins are available:
+[![License](https://img.shields.io/github/license/Somu-S/Yugen-)](./LICENSE)
+[![Issues](https://img.shields.io/github/issues/yourusername/Yugen-)](https://github.com/yourusername/yugen/issues)
+[![Forks](https://img.shields.io/github/forks/yourusername/Yugen-)](https://github.com/yourusername/yugen/network)
+[![Stars](https://img.shields.io/github/stars/yourusername/Yugen-)](https://github.com/yourusername/yugen/stargazers)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+**Yugen** is a sleek, minimalist anime search and discovery app built with React, TailwindCSS, and the Jikan API. It helps users explore a vast collection of anime titles with powerful filters, an intuitive UI, and real-time responsiveness — all with a touch of elegance.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ Features
+
+- 🔍 **Advanced Search** — Search by title, type, rating, status, and more
+- 🎭 **Genre Tags** — Select multiple genres with beautiful tag-based multiselect
+- ⚡ **Live Filtering** — See results update instantly as you change filters
+- 🌀 **Responsive UI** — Works great on desktop and mobile
+- 💅 **Clean, Modern Design** — Powered by Tailwind for a sleek feel
+
+---
+
+## 📸 Preview
+
+![App Screenshot](https://your-image-link.com/screenshot.png) <!-- Optional screenshot -->
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** React (with Vite)
+- **Styling:** TailwindCSS
+- **API:** [Jikan API v4](https://docs.api.jikan.moe/)
+- **State Management:** React Hooks
+
+---
+
+## 🚀 Getting Started
+
+```bash
+git clone https://github.com/yourusername/yugen.git
+cd yugen
+npm install
+npm run dev
