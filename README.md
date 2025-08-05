@@ -29,7 +29,7 @@
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/yourusername/yugen.git
+git clone https://github.com/Somu-S/Yugen-.git
 cd yugen
 npm install
 npm run dev
