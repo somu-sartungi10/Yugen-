@@ -20,7 +20,7 @@
 
 - **Frontend:** React (with Vite)
 - **Tanstack Query:** 
-- **Styling:** TailwindCSS
+- **Styling:** TailwindCSS && Material UI
 - **API:** [Jikan API v4](https://docs.api.jikan.moe/)
 - **State Management:** React Hooks
 
