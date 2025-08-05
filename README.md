@@ -1,12 +1,42 @@
-# React + Vite
+# 🌌 Yugen — Discover & Explore Your Favorite Anime
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+**Yugen** is a sleek, minimalist anime search and discovery app built with React, TailwindCSS, and the Jikan API. It helps users explore a vast collection of anime titles with powerful filters, an intuitive UI, and real-time responsiveness — all with a touch of elegance.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔍 **Advanced Search** — Search by title, type, rating, status, and more
+- 🎭 **Genre Tags** — Select multiple genres with beautiful tag-based multiselect
+- ⚡ **Live Filtering** — See results update instantly as you change filters
+- 🌀 **Responsive UI** — Works great on desktop and mobile
+- 💅 **Clean, Modern Design** — Powered by Tailwind for a sleek feel
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** React (with Vite)
+- **Tanstack Query:** 
+- **Styling:** TailwindCSS && Material UI
+- **API:** [Jikan API v4](https://docs.api.jikan.moe/)
+
+---
+
+## 🚀 Getting Started
+
+```bash
+git clone https://github.com/Somu-S/Yugen-.git
+cd yugen
+npm install
+npm run dev
+
+## 👤 Author
+
+Made with 💜 by [Somu Sartungi](https://github.com/Somu-S)
+
+## 🌐 API Source
+
+- [Jikan REST API v4](https://docs.api.jikan.moe/)
