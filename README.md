@@ -22,9 +22,6 @@
 - **Tanstack Query:** 
 - **Styling:** TailwindCSS && Material UI
 - **API:** [Jikan API v4](https://docs.api.jikan.moe/)
-- **State Management:** React Hooks
-
----
 
 ## 🚀 Getting Started
 
