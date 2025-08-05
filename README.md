@@ -33,3 +33,11 @@ git clone https://github.com/Somu-S/Yugen-.git
 cd yugen
 npm install
 npm run dev
+
+## 👤 Author
+
+Made with 💜 by [Somu Sartungi](https://github.com/Somu-S)
+
+## 🌐 API Source
+
+- [Jikan REST API v4](https://docs.api.jikan.moe/)
