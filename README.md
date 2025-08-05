@@ -23,6 +23,8 @@
 - **Styling:** TailwindCSS && Material UI
 - **API:** [Jikan API v4](https://docs.api.jikan.moe/)
 
+---
+
 ## 🚀 Getting Started
 
 ```bash
