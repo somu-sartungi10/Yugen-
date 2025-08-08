@@ -9,7 +9,7 @@ const RecommendSection = ({ id, isLoading }) => {
     error,
   } = useGetAnimeRecommendations(id);
 
-  const recommendations = recommendAnimeData?.data;
+  const recommendations = recommendAnimeData?.data.slice(0,12);
   console.log(recommendAnimeData);
 
   if (isLoading || !recommendAnimeData || recommendations.length === 0) {

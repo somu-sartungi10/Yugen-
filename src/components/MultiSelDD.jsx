@@ -39,6 +39,11 @@ const DropdownMultiSelect = ({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const selectedLabels = selected.map((val)=>options.find((opt)=>opt.value === val)?.label).filter(Boolean);
+
+  const visibleLabels = selectedLabels.slice(0,2)
+  const hiddenCount = selectedLabels.length - visibleLabels.length;
+
   return (
     <div
       className=" flex flex-col relative col-span-2 text-text"
@@ -50,7 +55,30 @@ const DropdownMultiSelect = ({
           className="border border-border text-sm bg-background rounded-md px-3 py-2 cursor-pointer"
           onClick={toggleDropdown}
         >
-          <span>Any</span>
+          {
+            visibleLabels.map((label, idx)=>(
+              <span
+              key={idx}
+              className="text-sm px-2 py-1 bg-primary/60 rounded-sm mr-1"
+              >
+                {label}
+              </span>
+            ))
+          }
+          {
+            hiddenCount > 0 && (
+              <span>
+                +{hiddenCount}
+              </span>
+            )
+          }
+          {
+            selected.length === 0 && (
+              <span className="text-text">
+                Select your genre....
+              </span>
+            )
+          }
           <span className="pointer-events-none absolute right-3 text-text -600 text-xs">
             ▼
           </span>

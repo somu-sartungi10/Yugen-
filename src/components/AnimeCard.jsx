@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Star } from "@mui/icons-material";
+import { motion as fm } from "framer-motion";
 
 const AnimeCard = ({ anime }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -8,11 +9,20 @@ const AnimeCard = ({ anime }) => {
 
   if (!anime) return null;
 
+  const MotionCard = fm.div
   return (
     <>
       <NavLink to={`/anime/${anime.mal_id}`}>
-        <div
-          className="rounded-lg bg-card-bg  hover:border hover:border-accent transition-all duration-150 ease-in hover:scale-105 hover:shadow-[0_11px_18px_-6px_rgba(222,193,51,0.5)]"
+        <MotionCard
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: "0 11px 18px -6px rgba(130,188,235,0.5)",
+            borderColor: "#82bceb",
+          }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="rounded-lg bg-card-bg border border-transparent"
         >
           <div className="relative">
             <div className="w-full h-80 overflow-hidden rounded-t-lg bg-black/20 flex items-center justify-center">
@@ -42,25 +52,20 @@ const AnimeCard = ({ anime }) => {
             ) : null}
             <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/80 to-transparent" />
           </div>
-          <div className="px-2 text-text h-20 flex flex-col justify-center gap-1">
+          <div className="px-2 h-20 flex flex-col justify-center gap-1">
             <div className="flex justify-between items-center">
-              <h2 className="font-bold text-sm line-clamp-2 font-heading">
-                {anime.title}
+              <h2 className="font-bold text-text text-sm line-clamp-2 font-heading">
+                {anime.title_english || anime.title || "Untitled"}
               </h2>
-              {
-                anime.score ? (
-
-              <p className="flex gap-0  text-sm text-text font-body">
-                <Star
-                style={{fontSize:'16px', color:'#dec133'}}
-                />{anime.score ?? "N/A"}
-              </p>
-                ) :
-                (null)
-              }
+              {anime.score ? (
+                <p className="flex gap-0  text-sm text-text font-body">
+                  <Star style={{ fontSize: "16px", color: "#dec133" }} />
+                  {anime.score ?? "N/A"}
+                </p>
+              ) : null}
             </div>
           </div>
-        </div>
+        </MotionCard>
       </NavLink>
     </>
   );

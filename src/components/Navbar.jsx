@@ -19,7 +19,7 @@ export const Navbar = ({ refresh }) => {
         </NavLink>
         <div className=" text-text flex font-body text-base gap-5">
           <Button to={`/`} label={`Home`} icon={<HomeOutlined fontSize="small"/>} />
-          <Button to={`/top/anime`} label={`Top`} icon={<ArrowUpwardOutlinedIcon fontSize="small"/>}/>
+          <Button to={`/top/anime`} label={`Top Anime`} icon={<ArrowUpwardOutlinedIcon fontSize="small"/>}/>
           <Button to={`/random`} label={`Surprise Me!`} />
         </div>
       </div>
