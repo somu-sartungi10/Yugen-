@@ -1,10 +1,10 @@
 import GridLayout from "../components/GridLayout";
-import { Navbar } from "../components/Navbar";
-import AnimeCard from "../components/AnimeCard";
-import Loader from "../components/Loader";
+import { Navbar } from "../components/UI/Navbar";
+import AnimeCard from "../components/UI/AnimeCard";
+import Loader from "../components/UI/Loader";
 import { useAllAnime, useGetGenres } from "../hooks/useAnime";
 import { useEffect, useState } from "react";
-import Dropdown from "../components/Dropdown";
+import Dropdown from "../components/UI/Dropdown";
 import Tags from "../components/tags";
 import MultiSelDD from "../components/MultiSelDD";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";

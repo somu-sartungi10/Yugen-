@@ -1,5 +1,5 @@
-import { Navbar } from "../components/Navbar";
-import Loader from "../components/Loader";
+import { Navbar } from "../components/UI/Navbar";
+import Loader from "../components/UI/Loader";
 import ShuffleIcon from "@mui/icons-material/Shuffle"
 import { Ranime_card } from "../components/Ranime_card";
 import { useLocation } from "react-router-dom";

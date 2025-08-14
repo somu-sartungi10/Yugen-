@@ -4,9 +4,13 @@ import RandomAnime from "./pages/RandomAnime";
 import { TopAnime } from "./pages/TopAnime";
 import { AnimeDetail } from "./pages/AnimeDetail";
 import SearchAnime from "./pages/SearchAnime";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 
 export default function App() {
   return (
+
+    <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route path="" element={<Home/>} />
@@ -16,5 +20,6 @@ export default function App() {
         <Route path="/search" element={<SearchAnime/>}/>
       </Routes>
     </BrowserRouter>
+    </Provider>
   )
 }

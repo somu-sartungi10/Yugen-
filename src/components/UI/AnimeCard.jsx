@@ -21,6 +21,9 @@ const AnimeCard = ({ anime }) => {
             boxShadow: "0 11px 18px -6px rgba(130,188,235,0.5)",
             borderColor: "#82bceb",
           }}
+          whileTap={{
+            scale:.8
+          }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className="rounded-lg bg-card-bg border border-transparent"
         >

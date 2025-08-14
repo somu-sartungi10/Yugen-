@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import ArrowDropDownCircleOutlinedIcon from '@mui/icons-material/ArrowDropDownCircleOutlined';
 
 const DropdownMultiSelect = ({
   options = [],
@@ -80,7 +81,7 @@ const DropdownMultiSelect = ({
             )
           }
           <span className="pointer-events-none absolute right-3 text-text -600 text-xs">
-            ▼
+            <ArrowDropDownCircleOutlinedIcon/>
           </span>
         </div>
       </div>

@@ -1,10 +1,11 @@
 import { useGetTopAnime } from "../hooks/useAnime";
-import { Navbar } from "../components/Navbar";
-import AnimeCard from "../components/AnimeCard";
+import { Navbar } from "../components/UI/Navbar";
+import AnimeCard from "../components/UI/AnimeCard";
 import { useState } from "react";
 import GridLayout from "../components/GridLayout";
-import Loader from "../components/Loader";
+import Loader from "../components/UI/Loader";
 import { PaginationOutline } from "../components/PaginationOutline";
+import Footer from "../components/UI/footer";
 
 export const TopAnime = () => {
   const [param, setParam] = useState({
@@ -43,7 +44,7 @@ export const TopAnime = () => {
   console.log(TopAnimeData);
 
   return (
-    <div className="pb-8 h-full ">
+    <div>
       <Navbar />
       <div className="text-text font-bold  px-6 text-2xl mt-4">
         Top Anime
@@ -70,8 +71,9 @@ export const TopAnime = () => {
       current_page={PaginationData?.current_page}
       animeList={TopAnimeData}
       isLoading={isLoading}
-      onPageChange={onPageChange}
+    onPageChange={onPageChange}
       />
+      <Footer/>
     </div>
   );
 };

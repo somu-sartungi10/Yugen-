@@ -2,12 +2,15 @@ import { NavLink } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "./button";
 import { HomeOutlined } from "@mui/icons-material";
-import Logo from '../assets/logo5.png'
+import Logo from '../../assets/logo5.png'
 import ArrowUpwardOutlinedIcon from '@mui/icons-material/ArrowUpwardOutlined';
 
 export const Navbar = ({ refresh }) => {
+
   return (
-    <nav className="navbar flex items-center justify-between bg-primary/10 px-8 h-[100px]">
+    <nav className="navbar flex items-center justify-between bg-primary/10 px-8 h-[80px]"
+
+    >
       <div className="flex  gap-10">
         <NavLink className='flex  items-center' to={`/`}>
           <div

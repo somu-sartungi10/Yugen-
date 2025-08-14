@@ -1,4 +1,4 @@
-import { Navbar } from "../components/Navbar";
+import { Navbar } from "../components/UI/Navbar";
 import { useParams } from "react-router-dom";
 import { useGetAnimeById } from "../hooks/useAnime";
 import { useEffect, useState } from "react";
@@ -16,6 +16,8 @@ import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
 import LocalFireDepartmentOutlinedIcon from '@mui/icons-material/LocalFireDepartmentOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import AdsClickOutlinedIcon from '@mui/icons-material/AdsClickOutlined';
+import Footer from "../components/UI/footer";
+
 
 export const AnimeDetail = () => {
   const { id } = useParams();
@@ -209,6 +211,9 @@ export const AnimeDetail = () => {
         )}
       </div>
       {!isLoading && <RecommendSection id={id} />}
+      {
+        showContent && <Footer/>
+      }
     </div>
   );
 };

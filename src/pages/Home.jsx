@@ -1,13 +1,12 @@
-import { Navbar } from "../components/Navbar";
+import { Navbar } from "../components/UI/Navbar";
+import BannerSlider from "../components/Banner";
 
 
 const Home = () => {
   return (
     <div>
       <Navbar/>
-      <span className="flex text-3xl font-bold animate-pulse text-text justify-center items-center h-svh">
-        Under construction by somu.🛠️
-      </span>
+      <BannerSlider/>
     </div>
   );
 };
