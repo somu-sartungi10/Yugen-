@@ -1,85 +1,78 @@
 import { useEffect, useState } from "react";
-import { motion as fm, AnimatePresence } from "framer-motion";
+import { motion as fm, AnimatePresence, easeInOut } from "framer-motion";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchBannerAnime, setIndex } from "../features/banner/bannerSlice";
 import { NavLink } from "react-router-dom";
 import { Star } from "@mui/icons-material";
 import { CalendarMonthOutlined } from "@mui/icons-material";
 import { PlayArrowOutlined } from "@mui/icons-material";
+import { useGetBannerAnimeQuery } from "../features/api/apiSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { nextIndex,prevIndex,setShowTrailer } from "../features/banner/bannerSlice";
 
 const BannerSlider = () => {
   const Motion = fm.div;
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const { data,index, status } = useSelector((state) => state.banner);
-  const [direction, setDirection] = useState(1);
+  const {data,isLoading,isError,error}=useGetBannerAnimeQuery()
+  console.log(data)
 
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchBannerAnime());
-    }
-  }, [status, dispatch]);
+  const {index,showTrailer } = useSelector((state)=>state.banner);
+  const [direction,setDirection]= useState(1)
 
   useEffect(() => {
-    if (status === "success" && data.length > 0) {
-      const timer = setInterval(() => {
-        dispatch(setIndex((index+1)%data.length));
+    if ( Array.isArray(data) && data.length > 0 && !showTrailer) {
+      const timer = setTimeout(() => {
+        dispatch(nextIndex(data.length));
       }, 10000);
-      return () => clearInterval(timer);
+      return () => clearTimeout(timer);
     }
-  }, [status, data,index,dispatch]);
+  }, [showTrailer,dispatch,data,index]);
 
-  const nextSlide = () => {
-    setDirection(1);
-    dispatch(setIndex((index+1)%data.length));
-  };
+  useEffect(() => {
+    if (showTrailer) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [showTrailer]);
 
-  const prevSlide = () => {
-    setDirection(0);
-    dispatch(setIndex((index-1+data.length)%data.length));
-  };
 
-  if (status === "loading") {
-    return <div>loading..</div>;
-  }
+  if(isLoading) return <div>Loading...</div>
+  if(isError) return <div> {error?.message}</div>
+  if(!data.length) return null
 
-  if (status == "failed") {
-    return (
-      <div className="text-2xl text-secondary"> something went wrong </div>
-    );
-  }
 
   const current = data[index];
-  if (!current) return null;
   console.log(current);
+
+  if (!current) return null;
   const bgImage = current?.trailer?.images?.maximum_image_url;
 
   const variants = {
-    enter:(direction)=>({
-      x:direction === 1 ? 400 : -400,
-      scale:.5,
-      opacity:0,
+    enter: (direction) => ({
+      x: direction === 1 ? 400 : -400,
+      scale: 0.5,
+      opacity: 0,
     }),
-    center:{
-      x:0,
-      scale:1,
-      opacity:1,
+    center: {
+      x: 0,
+      scale: 1,
+      opacity: 1,
     },
-    exit:(direction) =>({
-      x:direction === 1 ? -400 : 400,
-      scale:.5,
-      y:200,
-      opacity:0
-    })
+    exit: (direction) => ({
+      x: direction === 1 ? -400 : 400,
+      scale: 0.5,
+      y: 200,
+      opacity: 0,
+    }),
   };
 
   return (
-    <div className="overflow-hidden">
+    <div>
       <div className="relative overflow-hidden">
         <Motion
           key={index}
-          initial={{  opacity: 0 }}
+          initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
@@ -90,7 +83,7 @@ const BannerSlider = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-background to bg-transparent w-3/4"></div>
         </Motion>
 
-        <AnimatePresence mode="wait " custom={direction}>
+        <AnimatePresence  custom={direction}>
           <Motion
             key={current?.mal_id || index}
             custom={direction}
@@ -104,7 +97,6 @@ const BannerSlider = () => {
             }}
             className="w-[70%] absolute flex flex-col gap-2 left-8 top-32"
           >
-
             <div className="border border-accent w-fit px-2 py-1 text-sm rounded-md text-text font-bold">
               {current?.status}
             </div>
@@ -125,7 +117,7 @@ const BannerSlider = () => {
               </div>
 
               <div className="text-text flex items-center text-base">
-                <PlayArrowOutlined fontSize="small"/>
+                <PlayArrowOutlined fontSize="small" />
                 {current?.episodes} eps
               </div>
 
@@ -159,29 +151,66 @@ const BannerSlider = () => {
                 </NavLink>
               </Motion>
               <Motion whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.8 }}>
-                <button className="text-text flex items-center bg-secondary/20 border-secondary border rounded-md  gap-2 p-2">
-                  <PlayArrowOutlined />
-                  Watch Trailer
-                </button>
+                {current?.trailer?.embed_url && (
+                  <button
+                    className="text-text flex items-center bg-secondary/20 border-secondary border rounded-md  gap-2 p-2"
+                    onClick={() => dispatch(setShowTrailer(true))}
+                  >
+                    <PlayArrowOutlined />
+                    Watch Trailer
+                  </button>
+                )}
               </Motion>
             </div>
           </Motion>
         </AnimatePresence>
         <div className="flex gap-4 absolute right-6 bottom-6">
           <button
-            onClick={() => prevSlide()}
+            onClick={() => {
+              setDirection(0);
+              dispatch(prevIndex(data.length))
+            }}
             className="text-tertiary bg-text w-[40px] h-[40px]  rounded-full "
           >
             <ArrowBackIos fontSize="small" />
           </button>
 
           <button
-            onClick={() => nextSlide()}
+            onClick={() => {
+              setDirection(1);
+              dispatch(nextIndex(data.length))
+            }}
             className="text-tertiary bg-text w-[40px] h-[40px]  rounded-full"
           >
             <ArrowForwardIos fontSize="small" />
           </button>
         </div>
+
+        {showTrailer && (
+          <Motion
+            className="fixed inset-0 z-10  flex items-center justify-center  h-svh w-svw bg-black/80"
+            onClick={() => dispatch(setShowTrailer(false))}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2 }}
+          >
+            <AnimatePresence>
+              <Motion
+                className="flex w-3/4 h-3/4 aspect-[16/22]"
+                initial={{ scale: 0,opacity:0 }}
+                animate={{ scale: 1, opacity:1 }}
+                exit={{scale:0, opacity:0}}
+                transition={{ duration: 0.5, ease: easeInOut }}
+              >
+                <iframe
+                  className="w-full h-full "
+                  src={current?.trailer.embed_url}
+                  allowFullScreen
+                />
+              </Motion>
+            </AnimatePresence>
+          </Motion>
+        )}
       </div>
     </div>
   );

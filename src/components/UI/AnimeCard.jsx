@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Star } from "@mui/icons-material";
 import { motion as fm } from "framer-motion";
 
-const AnimeCard = ({ anime }) => {
+const AnimeCard = ({ anime,variant }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
 
@@ -13,6 +13,13 @@ const AnimeCard = ({ anime }) => {
   return (
     <>
       <NavLink to={`/anime/${anime.mal_id}`}>
+      {
+        variant === 'upcomingAnime' && (
+          <MotionCard>
+
+          </MotionCard>
+        )
+      }
         <MotionCard
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -56,8 +63,8 @@ const AnimeCard = ({ anime }) => {
             <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/80 to-transparent" />
           </div>
           <div className="px-2 h-20 flex flex-col justify-center gap-1">
-            <div className="flex justify-between items-center">
-              <h2 className="font-bold text-text text-sm line-clamp-2 font-heading">
+            <div className="flex justify-between gap-4 items-center">
+              <h2 className="font-bold text-text w-full text-sm line-clamp-2 font-heading">
                 {anime.title_english || anime.title || "Untitled"}
               </h2>
               {anime.score ? (

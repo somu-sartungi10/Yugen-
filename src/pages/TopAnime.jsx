@@ -1,21 +1,29 @@
-import { useGetTopAnime } from "../hooks/useAnime";
 import { Navbar } from "../components/UI/Navbar";
 import AnimeCard from "../components/UI/AnimeCard";
-import { useState } from "react";
 import GridLayout from "../components/GridLayout";
 import Loader from "../components/UI/Loader";
 import { PaginationOutline } from "../components/PaginationOutline";
 import Footer from "../components/UI/footer";
+import { useState } from "react";
+import { useGetTopAnimeQuery } from "../features/api/apiSlice";
 
 export const TopAnime = () => {
+
   const [param, setParam] = useState({
     limit: 24,
     page: 1,
     type: "",
     rating: "",
     filter: "",
-    sfw: true,
+    sfw: false,
   });
+
+  const { data , isLoading,isError,error } = useGetTopAnimeQuery(param);
+
+  const TopAnimeData = data?.data || [];
+  const pagination = data?.pagination;
+
+  console.log(TopAnimeData)
 
   const onPageChange = (newpage)=>{
     setParam((param)=>({
@@ -23,25 +31,6 @@ export const TopAnime = () => {
       page:newpage
     }))
   }
-
-  const {
-    data: TopAnime,
-    isLoading,
-    isError,
-    error,
-  } = useGetTopAnime(
-    param.type,
-    param.filter,
-    param.rating,
-    param.sfw,
-    param.page,
-    param.limit
-  );
-
-  const TopAnimeData = TopAnime?.data;
-  const PaginationData = TopAnime?.pagination
-  console.log(PaginationData)
-  console.log(TopAnimeData);
 
   return (
     <div>
@@ -56,21 +45,21 @@ export const TopAnime = () => {
       ) : isError ? (
         <div>data error {error.message}</div>
       ) : (
-        <GridLayout
-        children={TopAnimeData.map((anime)=>(
+        <GridLayout>
+          {TopAnimeData.map((anime)=>
           <AnimeCard
           key={anime.mal_id}
           anime={anime}
           />
-        ))}
-        />
+          )}
+        </GridLayout>
       )}
       </div>
       <PaginationOutline
-      count={PaginationData?.last_visible_page}
-      current_page={PaginationData?.current_page}
+      count={pagination?.last_visible_page}
+      current_page={pagination?.current_page}
       animeList={TopAnimeData}
-      isLoading={isLoading}
+      isLoading={status === "loading"}
     onPageChange={onPageChange}
       />
       <Footer/>
