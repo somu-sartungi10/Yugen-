@@ -1,7 +1,7 @@
 import GridLayout from "../components/GridLayout";
 import { Navbar } from "../components/UI/Navbar";
-import AnimeCard from "../components/UI/AnimeCard";
 import Loader from "../components/UI/Loader";
+import AnimeCard from "../components/UI/Anicard/AnimeCard";
 import { useAllAnime, useGetGenres } from "../hooks/useAnime";
 import { useEffect, useState } from "react";
 import Dropdown from "../components/UI/Dropdown";

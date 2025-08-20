@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Star } from "@mui/icons-material";
 import { motion as fm } from "framer-motion";
 
-const AnimeCard = ({ anime,variant }) => {
+const AnimeCard = ({ anime }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
 
@@ -13,13 +13,6 @@ const AnimeCard = ({ anime,variant }) => {
   return (
     <>
       <NavLink to={`/anime/${anime.mal_id}`}>
-      {
-        variant === 'upcomingAnime' && (
-          <MotionCard>
-
-          </MotionCard>
-        )
-      }
         <MotionCard
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -32,7 +25,7 @@ const AnimeCard = ({ anime,variant }) => {
             scale:.8
           }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="rounded-lg bg-card-bg border border-transparent"
+          className="rounded-lg h-[400px] bg-card-bg border border-transparent"
         >
           <div className="relative">
             <div className="w-full h-80 overflow-hidden rounded-t-lg bg-black/20 flex items-center justify-center">

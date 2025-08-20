@@ -5,16 +5,17 @@ import { NavLink } from "react-router-dom";
 import { Star } from "@mui/icons-material";
 import { CalendarMonthOutlined } from "@mui/icons-material";
 import { PlayArrowOutlined } from "@mui/icons-material";
-import { useGetBannerAnimeQuery } from "../features/api/apiSlice";
+import { useGetBannerAnimeQuery } from "../../../features/api/apiSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { nextIndex,prevIndex,setShowTrailer } from "../features/banner/bannerSlice";
+import { nextIndex,prevIndex,setShowTrailer } from "../../../features/banner/bannerSlice";
+import SkelBanner from "./skelBanner";
 
 const BannerSlider = () => {
   const Motion = fm.div;
   const dispatch = useDispatch()
 
-  const {data,isLoading,isError,error}=useGetBannerAnimeQuery()
-  console.log(data)
+  const {data,isError,error}=useGetBannerAnimeQuery()
+
 
   const {index,showTrailer } = useSelector((state)=>state.banner);
   const [direction,setDirection]= useState(1)
@@ -37,9 +38,8 @@ const BannerSlider = () => {
   }, [showTrailer]);
 
 
-  if(isLoading) return <div>Loading...</div>
   if(isError) return <div> {error?.message}</div>
-  if(!data.length) return null
+  if(!Array.isArray(data || !data)) return null
 
 
   const current = data[index];

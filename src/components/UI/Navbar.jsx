@@ -31,7 +31,7 @@ export const Navbar = ({ refresh }) => {
         to="/search"
         className={({ isActive }) =>
           `bg-text flex justify-center items-center rounded-md transition p-1 px-3 ${
-            isActive ? "border-3 border-primary " : ""
+            isActive ? "border-3 border-primary " : "border-temporary"
           }`
         }
       >
