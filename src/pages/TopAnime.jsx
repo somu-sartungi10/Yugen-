@@ -1,7 +1,6 @@
 import { Navbar } from "../components/UI/Navbar";
 import AnimeCard from "../components/UI/Anicard/AnimeCard";
 import GridLayout from "../components/GridLayout";
-import Loader from "../components/UI/Loader";
 import { PaginationOutline } from "../components/PaginationOutline";
 import Footer from "../components/UI/footer";
 import { useState } from "react";
