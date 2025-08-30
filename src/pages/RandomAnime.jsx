@@ -4,6 +4,7 @@ import ShuffleIcon from "@mui/icons-material/Shuffle"
 import { Ranime_card } from "../components/Ranime_card";
 import { useLocation } from "react-router-dom";
 import { useGetRandomAnime } from "../hooks/UseAnime.js";
+import React from "react";
 
 function RandomAnime() {
   const {

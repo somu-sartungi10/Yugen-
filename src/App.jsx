@@ -6,6 +6,7 @@ import { AnimeDetail } from "./pages/AnimeDetail";
 import SearchAnime from "./pages/SearchAnime";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import React from "react";
 
 export default function App() {
   return (

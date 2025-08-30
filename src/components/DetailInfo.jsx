@@ -1,3 +1,5 @@
+import React from "react";
+
 export const DetailInfoBox = ({ icon, label, value }) => {
   return (
    <div className="flex flex-col items-center  w-full max-w-[280px] px-4 py-5 bg-card-bg rounded-md shadow-lg border border-primary/30 hover:border-primary hover:shadow-primary/20 transition-all">

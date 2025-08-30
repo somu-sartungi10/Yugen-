@@ -1,6 +1,7 @@
 import { useGetAnimeRecommendations } from "../hooks/UseAnime.js";
 import AnimeCard from "./UI/Anicard/AnimeCard";
 import GridLayout from "./GridLayout";
+import React from "react";
 
 const RecommendSection = ({ id, isLoading }) => {
   const {

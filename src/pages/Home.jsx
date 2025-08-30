@@ -6,6 +6,7 @@ import WhatshotIcon from '@mui/icons-material/Whatshot';
 import AnimeSection from "../components/AnimeSection";
 import { useGetBannerAnimeQuery, useGetTopAiringQuery,useGetTopAnimeQuery } from "../features/api/apiSlice";
 import SkelBanner from "../components/UI/banner/SkelBanner.jsx";
+import React from "react";
 
 const Home = () => {
   const topAiring = useGetTopAiringQuery({limit:12})

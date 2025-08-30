@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ArrowDropDownCircleOutlinedIcon from '@mui/icons-material/ArrowDropDownCircleOutlined';
+import React from "react";
 
 const DropdownMultiSelect = ({
   options = [],
