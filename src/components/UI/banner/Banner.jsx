@@ -8,7 +8,6 @@ import { PlayArrowOutlined } from "@mui/icons-material";
 import { useGetBannerAnimeQuery } from "../../../features/api/apiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { nextIndex,prevIndex,setShowTrailer } from "../../../features/banner/bannerSlice";
-import SkelBanner from "./skelBanner";
 
 const BannerSlider = () => {
   const Motion = fm.div;

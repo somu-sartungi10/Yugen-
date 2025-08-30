@@ -5,7 +5,7 @@ import MovingIcon from "@mui/icons-material/Moving";
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import AnimeSection from "../components/AnimeSection";
 import { useGetBannerAnimeQuery, useGetTopAiringQuery,useGetTopAnimeQuery } from "../features/api/apiSlice";
-import SkelBanner from "../components/UI/banner/skelBanner.jsx";
+import SkelBanner from "../components/UI/banner/SkelBanner.jsx";
 
 const Home = () => {
   const topAiring = useGetTopAiringQuery({limit:12})
