@@ -3,7 +3,7 @@ import Loader from "../components/UI/Loader";
 import ShuffleIcon from "@mui/icons-material/Shuffle"
 import { Ranime_card } from "../components/Ranime_card";
 import { useLocation } from "react-router-dom";
-import { useGetRandomAnime } from "../hooks/useAnime";
+import { useGetRandomAnime } from "../hooks/UseAnime.js";
 
 function RandomAnime() {
   const {

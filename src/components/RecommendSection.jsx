@@ -1,4 +1,4 @@
-import { useGetAnimeRecommendations } from "../hooks/useAnime";
+import { useGetAnimeRecommendations } from "../hooks/UseAnime.js";
 import AnimeCard from "./UI/Anicard/AnimeCard";
 import GridLayout from "./GridLayout";
 
