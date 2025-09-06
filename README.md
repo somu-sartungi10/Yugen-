@@ -13,7 +13,9 @@
 - ⚡ **Live Filtering** — See results update instantly as you change filters
 - 🌀 **Responsive UI** — Works great on desktop and mobile
 - 💅 **Clean, Modern Design** — Powered by Tailwind for a sleek feel
-- 
+
+  ---
+  
 
 - ## To do List 📃 
 
