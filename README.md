@@ -17,7 +17,7 @@
 ---
   
 
-- ## To do List 📃 
+## To do List 📃 
 
 - 📱 **Making it fully responsive** — Making the web app fully responsive for all the platforms
 - 🔑 **Authentication** — Sign up and authentication 
