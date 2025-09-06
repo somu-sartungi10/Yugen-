@@ -14,7 +14,7 @@
 - 🌀 **Responsive UI** — Works great on desktop and mobile
 - 💅 **Clean, Modern Design** — Powered by Tailwind for a sleek feel
 
-  ---
+---
   
 
 - ## To do List 📃 
