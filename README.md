@@ -13,6 +13,13 @@
 - ⚡ **Live Filtering** — See results update instantly as you change filters
 - 🌀 **Responsive UI** — Works great on desktop and mobile
 - 💅 **Clean, Modern Design** — Powered by Tailwind for a sleek feel
+- 
+
+- ## To do List 📃 
+
+- 📱 **Making it fully responsive** — Making the web app fully responsive for all the platforms
+- 🔑 **Authentication** — Sign up and authentication 
+
 
 ---
 
