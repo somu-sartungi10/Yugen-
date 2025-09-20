@@ -3,8 +3,6 @@ import express from "express"
 
 const app = express();
 
-
-
 app.get('/', (req, res)=>{
     res.send("welcomt to jikan");
     res.send("this is express server")
