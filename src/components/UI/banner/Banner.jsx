@@ -55,7 +55,7 @@ const BannerSlider = () => {
 
   if (!current) return null;
 
-  const bgImage = current?.trailer?.images?.maximum_image_url ?? "";
+  const bgImage = current?.trailer?.images?.maximum_image_url ?? null;
 
   const variants = {
     enter: (dir) => ({ x: dir === 1 ? 400 : -400, scale: 0.5, opacity: 0 }),

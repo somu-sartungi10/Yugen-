@@ -1,6 +1,6 @@
 import { Navbar } from "../components/UI/Navbar";
 import { useParams } from "react-router-dom";
-import { useGetAnimeById } from "../hooks/useAnime.js";
+import { useGetAnimeById } from "../hooks/UseAnime";
 import { useEffect, useState } from "react";
 import { FadeLoader } from "react-spinners";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
